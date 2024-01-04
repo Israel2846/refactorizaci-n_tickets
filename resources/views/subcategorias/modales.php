@@ -8,8 +8,25 @@
         <form id="formCreateUpdate" method="post" class="ui fluid form">
 
             <div class="field">
-                <label for="cat_nom">Nombre de la categoría</label>
-                <input type="text" name="cat_nom" id="inpModalCreateUpdate" placeholder="Ingrese el nombre de la categoría" required>
+
+                <label for="cat_id">Categoría a la que pertenece</label>
+
+                <select name="cat_id" class="ui search selection dropdown" id="select" required>
+                    <option value="">Seleccione categoría</option>
+
+                    <?php foreach ($categorias as $categoria) : ?>
+
+                        <option value="<?= $categoria['id'] ?>"><?= $categoria['cat_nom'] ?></option>
+
+                    <?php endforeach ?>
+
+                </select>
+
+            </div>
+
+            <div class="field">
+                <label for="cats_nom">Nombre de la subcategoría</label>
+                <input type="text" name="cats_nom" id="inpModalCreateUpdate" placeholder="Ingrese el nombre de la subcategoría" required>
             </div>
 
             <button type="submit" class="ui blue button">Envíar</button>
@@ -32,7 +49,7 @@
         <form id="formDelete" method="post" class="ui fluid form">
 
             <div class="field">
-                <label for="cat_nom">¿Eliminar la categoría?</label>
+                <label for="cat_nom">¿Eliminar la subcategoría?</label>
             </div>
 
             <button type="submit" class="ui red button">Eliminar</button>
@@ -46,5 +63,5 @@
 <!-- End modal de eliminación -->
 
 <script>
-    <?php include_once '../resources/js/categorias/modales.js' ?>
+    <?php include_once '../resources/js/subcategorias/modales.js' ?>
 </script>

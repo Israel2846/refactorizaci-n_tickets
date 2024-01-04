@@ -1,13 +1,17 @@
 $(document).ready(function () {
-    $('#btnNuevaCat').on('click', function () {
+    $('#select').dropdown();
+
+    $('#btnNuevaSubCat').on('click', function () {
         $('#headerCreateUpdate').html('Crear');
 
-        $('#formCreateUpdate').attr('action', '/categoria/create');
+        $('#formCreateUpdate').attr('action', '/subcategoria/create');
 
         $('#inpModalCreateUpdate').val('');
 
+        $('#select').dropdown('clear');
+
         $('.ui.modal.create.update').modal('show');
-    });
+    })
 
     $('#btnCancelCreateUpdate').on('click', function (event) {
         event.preventDefault();
@@ -21,22 +25,24 @@ $(document).ready(function () {
 })
 
 function modalEdit(id) {
-    $.get('/categoria/edit/' + id, function (data) {
+    $.get('/subcategoria/edit/' + id, function (data) {
         $('#headerCreateUpdate').html('Editar');
 
-        $('#formCreateUpdate').attr('action', '/categoria/edit/' + data['id']);
+        $('#formCreateUpdate').attr('action', '/subcategoria/edit/' + data['id']);
 
-        $('#inpModalCreateUpdate').val(data['cat_nom']);
+        $('#inpModalCreateUpdate').val(data['cats_nom']);
+
+        $('#select').dropdown('set selected', data['cat_id']);
 
         $('.ui.modal.create.update').modal('show');
     })
         .fail(function (jqXHR, textStatus, errorThrown) {
-            console.error('Error en la solicitud:', textStatus, errorThrown);
-        });
+            console.log('Error en la solicitud', textStatus, errorThrown);
+        })
 }
 
 function modalDelete(id) {
-    let urlDelete = '/categoria/delete/' + id;
+    let urlDelete = '/subcategoria/delete/' + id;
 
     $('#formDelete').attr('action', urlDelete);
 

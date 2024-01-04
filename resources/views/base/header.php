@@ -14,3 +14,4 @@
 </head>
 
 <body>
+    <?php include_once '../resources/views/base/nav.php' ?>

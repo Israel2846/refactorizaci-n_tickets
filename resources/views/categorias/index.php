@@ -2,7 +2,7 @@
 
 <div class="ui segment container">
 
-    <button class="ui blue button" id="btnNuevaCat">Crear nueva categoría</button>
+    <button class="ui blue button" id="btnNuevaCat">Crear categoría</button>
 
     <table class="ui celled striped table">
         <thead>

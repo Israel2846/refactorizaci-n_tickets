@@ -7,7 +7,7 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
-    function index()
+    public function index()
     {
         $model = new Categoria;
 
@@ -22,7 +22,7 @@ class CategoriaController extends Controller
         return $this->view('categorias.index', compact('categorias', 'title'));
     }
 
-    function store()
+    public function store()
     {
         $data = $_POST;
 
@@ -32,14 +32,14 @@ class CategoriaController extends Controller
         return $this->redirect('/categoria');
     }
 
-    function edit($id)
+    public function edit($id)
     {
         $model = new Categoria;
 
         return $model->find($id);
     }
 
-    function update($id)
+    public function update($id)
     {
         $data = $_POST;
 
@@ -49,7 +49,7 @@ class CategoriaController extends Controller
         return $this->redirect('/categoria');
     }
 
-    function destroy($id)
+    public function destroy($id)
     {
         $model = new Categoria;
         $model->delete($id);
