@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    $('#btnNuevaCat').on('click', function () {
+    $('#btnNuevoAlmacen').on('click', function () {
         $('#headerCreateUpdate').html('Crear');
 
-        $('#formCreateUpdate').attr('action', '/categoria/create');
+        $('#formCreateUpdate').attr('action', '/almacen/create');
 
         $('#inpModalCreateUpdate').val('');
 
@@ -21,22 +21,22 @@ $(document).ready(function () {
 });
 
 function modalEdit(id) {
-    $.get('/categoria/edit/' + id, function (data) {
+    $.get('/almacen/edit/' + id, function (data) {
         $('#headerCreateUpdate').html('Editar');
 
-        $('#formCreateUpdate').attr('action', '/categoria/edit/' + data['id']);
+        $('#formCreateUpdate').attr('action', '/almacen/edit/' + data['id']);
 
-        $('#inpModalCreateUpdate').val(data['cat_nom']);
+        $('#inpModalCreateUpdate').val(data['nombre_almacen']);
 
         $('.ui.modal.create.update').modal('show');
     })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            console.error('Error en la solicitud:', textStatus, errorThrown);
+        .fail(function (textStatus, errorThrown) {
+            console.error('Error en la solicitud', textStatus, errorThrown);
         });
 }
 
 function modalDelete(id) {
-    let urlDelete = '/categoria/delete/' + id;
+    let urlDelete = '/almacen/delete/' + id;
 
     $('#formDelete').attr('action', urlDelete);
 

@@ -4,6 +4,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
 $homeRoute = '/home';
 $categoriaRoute = '/categoria';
 $subcategoriaRoute = '/subcategoria';
+$almacenRoute = '/almacen';
 
 function isActive($currentUrl, $targetRoute)
 {
@@ -22,5 +23,9 @@ function isActive($currentUrl, $targetRoute)
 
     <a class="item <?= isActive($currentUrl, $subcategoriaRoute) ? 'active' : '' ?>" href="<?= $subcategoriaRoute ?>">
         Subcategoría
+    </a>
+
+    <a class="item <?= isActive($currentUrl, $almacenRoute) ? 'active' : '' ?>" href="<?= $almacenRoute ?>">
+        Almacen
     </a>
 </div>
