@@ -1,10 +1,10 @@
 <?php
 $currentUrl = $_SERVER['REQUEST_URI'];
 
-$homeRoute = '/home';
 $categoriaRoute = '/categoria';
 $subcategoriaRoute = '/subcategoria';
 $almacenRoute = '/almacen';
+$areaRoute = '/area';
 
 function isActive($currentUrl, $targetRoute)
 {
@@ -13,10 +13,6 @@ function isActive($currentUrl, $targetRoute)
 ?>
 
 <div class="ui secondary  menu">
-    <a class="item <?= isActive($currentUrl, $homeRoute) ? 'active' : '' ?>">
-        Home
-    </a>
-
     <a class="item <?= isActive($currentUrl, $categoriaRoute) ? 'active' : '' ?>" href="<?= $categoriaRoute ?>">
         Categoría
     </a>
@@ -26,6 +22,10 @@ function isActive($currentUrl, $targetRoute)
     </a>
 
     <a class="item <?= isActive($currentUrl, $almacenRoute) ? 'active' : '' ?>" href="<?= $almacenRoute ?>">
-        Almacen
+        Almacén
+    </a>
+
+    <a class="item <?= isActive($currentUrl, $areaRoute) ? 'active' : '' ?>" href="<?= $areaRoute ?>">
+        Área
     </a>
 </div>

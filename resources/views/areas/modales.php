@@ -8,20 +8,20 @@
         <form id="formCreateUpdate" method="post" class="ui fluid form">
 
             <div class="field">
-                <label for="cats_nom">Nombre de la subcategoría</label>
-                <input type="text" name="cats_nom" id="inpModalCreateUpdate" placeholder="Ingrese el nombre de la subcategoría" required>
+                <label for="cats_nom">Nombre del área</label>
+                <input type="text" name="nombre_area" id="inpModalCreateUpdate" placeholder="Ingrese el nombre del área" required>
             </div>
 
             <div class="field">
 
-                <label for="cat_id">Categoría a la que pertenece</label>
+                <label for="cat_id">Álmacen al que pertenece</label>
 
-                <select name="cat_id" class="ui search selection dropdown" id="select" required>
-                    <option value="">Seleccione categoría</option>
+                <select name="id_almacen" class="ui search selection dropdown" id="select" required>
+                    <option value="">Seleccione almacén</option>
 
-                    <?php foreach ($categorias as $categoria) : ?>
+                    <?php foreach ($almacenes as $almacen) : ?>
 
-                        <option value="<?= $categoria['id'] ?>"><?= $categoria['cat_nom'] ?></option>
+                        <option value="<?= $almacen['id'] ?>"><?= $almacen['nombre_almacen'] ?></option>
 
                     <?php endforeach ?>
 
@@ -63,5 +63,5 @@
 <!-- End modal de eliminación -->
 
 <script>
-    <?php include_once '../resources/js/subcategorias/modales.js' ?>
+    <?php include_once '../resources/js/areas/modales.js' ?>
 </script>

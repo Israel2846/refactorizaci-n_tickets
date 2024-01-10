@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AlmacenController;
+use App\Controllers\AreaController;
 use App\Controllers\CategoriaController;
 use App\Controllers\SubcategoriaController;
 use Lib\Route;
@@ -22,5 +23,11 @@ Route::post('/almacen/create', [AlmacenController::class, 'store']);
 Route::get('/almacen/edit/:id', [AlmacenController::class, 'edit']);
 Route::post('/almacen/edit/:id', [AlmacenController::class, 'update']);
 Route::post('/almacen/delete/:id', [AlmacenController::class, 'destroy']);
+
+Route::get('/area', [AreaController::class, 'index']);
+Route::post('/area/create', [AreaController::class, 'store']);
+Route::get('/area/edit/:id', [AreaController::class, 'edit']);
+Route::post('/area/edit/:id', [AreaController::class, 'update']);
+Route::post('/area/delete/:id', [AreaController::class, 'destroy']);
 
 Route::dispatch();
