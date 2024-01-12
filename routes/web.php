@@ -4,6 +4,7 @@ use App\Controllers\AlmacenController;
 use App\Controllers\AreaController;
 use App\Controllers\CategoriaController;
 use App\Controllers\SubcategoriaController;
+use App\Controllers\UsuarioController;
 use Lib\Route;
 
 Route::get('/categoria', [CategoriaController::class, 'index']);
@@ -29,5 +30,9 @@ Route::post('/area/create', [AreaController::class, 'store']);
 Route::get('/area/edit/:id', [AreaController::class, 'edit']);
 Route::post('/area/edit/:id', [AreaController::class, 'update']);
 Route::post('/area/delete/:id', [AreaController::class, 'destroy']);
+
+Route::get('/usuario', [UsuarioController::class, 'index']);
+Route::get('/usuario/comboArea/:id', [AreaController::class, 'getAreaPorAlmacen']);
+Route::post('/usuario/create', [UsuarioController::class, 'create']);
 
 Route::dispatch();

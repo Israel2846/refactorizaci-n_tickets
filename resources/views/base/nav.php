@@ -5,6 +5,7 @@ $categoriaRoute = '/categoria';
 $subcategoriaRoute = '/subcategoria';
 $almacenRoute = '/almacen';
 $areaRoute = '/area';
+$usuarioRoute = '/usuario';
 
 function isActive($currentUrl, $targetRoute)
 {
@@ -27,5 +28,9 @@ function isActive($currentUrl, $targetRoute)
 
     <a class="item <?= isActive($currentUrl, $areaRoute) ? 'active' : '' ?>" href="<?= $areaRoute ?>">
         Área
+    </a>
+
+    <a class="item <?= isActive($currentUrl, $usuarioRoute) ? 'active' : '' ?>" href="<?= $usuarioRoute ?>">
+        Usuario
     </a>
 </div>

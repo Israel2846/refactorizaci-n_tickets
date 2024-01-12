@@ -135,7 +135,7 @@ class Model
 
         if (empty($this->query)) {
 
-            $sql = "SELECT {$this->select} FROM {$this->table}";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS {$this->select} FROM {$this->table}";
 
             if ($this->where) {
                 $sql .= " WHERE {$this->where}";

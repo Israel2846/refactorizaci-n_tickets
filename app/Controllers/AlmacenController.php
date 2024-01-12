@@ -14,7 +14,7 @@ class AlmacenController extends Controller
         $model = new Almacen;
 
         if (isset($_GET['search'])) {
-            $almacenes = $model->where('nombre_almacen', 'LIKE', '%' . $_GET['search'] . '%');
+            $almacenes = $model->where('nombre_almacen', 'LIKE', '%' . $_GET['search'] . '%')->get();
         } else {
             $almacenes = $model->get();
         }

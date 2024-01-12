@@ -55,4 +55,11 @@ class AreaController extends Controller
 
         return $this->redirect('/area');
     }
+
+    public function getAreaPorAlmacen($id)
+    {
+        $model = new Area;
+
+        return $model->where('id_almacen', '=', $id)->get();
+    }
 }
