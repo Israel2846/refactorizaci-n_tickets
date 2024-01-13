@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$nombre_usuario = $_SESSION['nombre'];
+
+?>
 <!DOCTYPE html>
 <html lang="es-es">
 
@@ -15,3 +21,4 @@
 
 <body>
     <?php include_once '../resources/views/base/nav.php' ?>
+    <?= $nombre_usuario ?>

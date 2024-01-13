@@ -14,4 +14,15 @@ class Usuario extends Model
 
         $this->query($sql, $values);
     }
+
+    public function loginUser($data)
+    {
+        $values = array_values($data);
+
+        $sql = "CALL select_user(" . str_repeat('?, ', count($values) - 1) . "?)";
+
+        $this->query($sql, $values);
+
+        return $this->query->fetch_assoc();
+    }
 }

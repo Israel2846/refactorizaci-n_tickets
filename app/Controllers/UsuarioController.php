@@ -35,4 +35,36 @@ class UsuarioController extends Controller
 
         return $this->redirect('/usuario');
     }
+
+    public function login_form($mensaje = null)
+    {
+        if ($mensaje) {
+            $mensaje = 'Credenciales incorrectas';
+        }
+        return $this->view('usuarios.login', compact('mensaje'));
+    }
+
+    public function login()
+    {
+        session_start();
+
+        $data = $_POST;
+
+        $model = new Usuario;
+
+        $user_data = $model->loginUser($data);
+
+        if ($user_data) {
+            $_SESSION['id'] = $user_data['id'];
+            $_SESSION['nombre'] = $user_data['usu_nom'];
+            $_SESSION['apellido'] = $user_data['usu_ape'];
+            $_SESSION['almacen'] = $user_data['usu_almacen'];
+            $_SESSION['area'] = $user_data['usu_area'];
+            $_SESSION['rol'] = $user_data['rol_id'];
+
+            return $this->redirect('/categoria');
+        } else {
+            $this->redirect('/error/1');
+        }
+    }
 }

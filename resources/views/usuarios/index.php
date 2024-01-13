@@ -1,4 +1,18 @@
-<?php include_once '../resources/views/base/header.php'; ?>
+<?php
+
+include_once '../resources/views/base/header.php';
+
+$nombre_almacenes = array_column($almacenes, 'nombre_almacen', 'id');
+
+$roles = [
+    ['id' => 1, 'nombre' => 'Soporte'],
+    ['id' => 2, 'nombre' => 'Admin'],
+    ['id' => 3, 'nombre' => 'Usuario'],
+];
+
+$nombre_roles = array_column($roles, 'nombre', 'id');
+
+?>
 
 <div class="ui segment container">
 
@@ -20,8 +34,19 @@
                 <tr>
                     <td><?= $usuario['usu_nom'] ?></td>
                     <td><?= $usuario['usu_ape'] ?></td>
-                    <td><?= $usuario['usu_almacen'] ?></td>
-                    <td><?= $usuario['rol_id'] ?></td>
+                    <td><?= $nombre_almacenes[$usuario['usu_almacen']] ?></td>
+                    <td>
+                        <?php if ($usuario['rol_id'] == 1) : ?>
+                            <p class="ui blue circular label">
+                            <?php elseif ($usuario['rol_id'] == 2) : ?>
+                            <p class="ui purple circular label">
+                            <?php elseif ($usuario['rol_id'] == 3) : ?>
+                            <p class="ui orange circular label">
+                            <?php else : ?>
+                            <p class="ui circular label">
+                            <?php endif ?>
+                            <?= $nombre_roles[$usuario['rol_id']] ?></p>
+                    </td>
                     <td class="rigth aligned collapsing">
                         <button class="ui red circular button">Eliminar</button>
 
@@ -36,7 +61,7 @@
     $paginate = 'usuarios';
 
     include_once '../resources/views/assets/pagination.php';
-    
+
     ?>
 
 </div>

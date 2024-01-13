@@ -7,6 +7,10 @@ use App\Controllers\SubcategoriaController;
 use App\Controllers\UsuarioController;
 use Lib\Route;
 
+Route::get('/', [UsuarioController::class, 'login_form']);
+Route::get('/error/:error', [UsuarioController::class, 'login_form']);
+Route::post('/', [UsuarioController::class, 'login']);
+
 Route::get('/categoria', [CategoriaController::class, 'index']);
 Route::post('/categoria/create', [CategoriaController::class, 'store']);
 Route::get('/categoria/edit/:id', [CategoriaController::class, 'edit']);
