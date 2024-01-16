@@ -85,7 +85,7 @@ class UsuarioController extends Controller
 
     public function update($id)
     {
-        return $data = $_POST;
+        $data = $_POST;
 
         $model = new Usuario;
         $model->updateUser($id, $data);
@@ -98,7 +98,7 @@ class UsuarioController extends Controller
         $data = [
             "est" => 0,
         ];
-        
+
         $model = new Usuario;
         $model->update($id, $data);
     }
