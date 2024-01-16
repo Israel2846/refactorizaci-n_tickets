@@ -33,4 +33,9 @@ function isActive($currentUrl, $targetRoute)
     <a class="item <?= isActive($currentUrl, $usuarioRoute) ? 'active' : '' ?>" href="<?= $usuarioRoute ?>">
         Usuario
     </a>
+    <div class="right menu">
+        <a class="ui item" href="/cerrar_sesion">
+            Cerrar sesión
+        </a>
+    </div>
 </div>

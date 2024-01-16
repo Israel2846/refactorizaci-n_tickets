@@ -6,7 +6,8 @@ $(document).ready(function () {
 
         $('#formCreateUpdate').attr('action', '/usuario/create');
 
-        $('#inpModalCreateUpdate').val('');
+        $('#formCreateUpdate')[0].reset();
+        $('.ui.search.dropdown').dropdown('clear');
 
         $('.ui.modal.create.update').modal('show');
     });
@@ -49,4 +50,38 @@ function obtenerOpcionesDinamicas(valorSeleccionado, callback) {
             callback(data);
         }
     });
+}
+
+function modalEdit(id) {
+    $.get("/usuario/edit/" + id,
+        function (data) {
+            $('#headerCreateUpdate').html('Crear');
+
+            $('#formCreateUpdate').attr('action', '/usuario/edit/' + data['id']);
+
+            $('#inpNombre').val(data['usu_nom']);
+            $('#inpApellido').val(data['usu_ape']);
+            $('#inpNumColab').val(data['num_colab']);
+            $('#inpMail').val(data['usu_correo']);
+            $('#slcAlmacen').dropdown('set selected', data['usu_almacen']);
+            $('#slcArea').dropdown('set selected', data['usu_area']);
+            $('#rolId').dropdown('set selected', data['rol_id']);
+            $('#usuTelf').val(data['usu_telf']);
+
+            $('.ui.modal.create.update').modal('show');
+        },
+        "json"
+    ).fail(
+        function (textStatus, errorThrown) {
+            console.error('Error en la solicitud', textStatus, errorThrown);
+        }
+    );
+}
+
+function modalDelete(id) {
+    const urlDelete = '/usuario/delete/' + id;
+
+    $('#formDelete').attr('action', urlDelete);
+
+    $('.ui.modal.delete').modal('show');
 }

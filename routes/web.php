@@ -10,6 +10,7 @@ use Lib\Route;
 Route::get('/', [UsuarioController::class, 'login_form']);
 Route::get('/error/:error', [UsuarioController::class, 'login_form']);
 Route::post('/', [UsuarioController::class, 'login']);
+Route::get('/cerrar_sesion', [UsuarioController::class, 'logout']);
 
 Route::get('/categoria', [CategoriaController::class, 'index']);
 Route::post('/categoria/create', [CategoriaController::class, 'store']);
@@ -38,5 +39,8 @@ Route::post('/area/delete/:id', [AreaController::class, 'destroy']);
 Route::get('/usuario', [UsuarioController::class, 'index']);
 Route::get('/usuario/comboArea/:id', [AreaController::class, 'getAreaPorAlmacen']);
 Route::post('/usuario/create', [UsuarioController::class, 'create']);
+Route::get('/usuario/edit/:id', [UsuarioController::class, 'edit']);
+Route::post('/usuario/edit/:id', [UsuarioController::class, 'update']);
+Route::post('/usuario/delete/:id', [UsuarioController::class, 'destroy']);
 
 Route::dispatch();

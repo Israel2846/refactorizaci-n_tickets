@@ -16,7 +16,22 @@ $nombre_roles = array_column($roles, 'nombre', 'id');
 
 <div class="ui segment container">
 
-    <button class="ui blue button" id="btnNuevoUsuario">Crear usuario</button>
+    <div class="ui grid">
+        <div class="three wide column">
+            <button class="ui blue fluid button" id="btnNuevoUsuario">Crear usuario</button>
+        </div>
+
+        <div class="thirteen wide column">
+            <form action="/usuario" method="get">
+                <div class="ui fluid action input">
+                    <input type="text" placeholder="Buscar..." name="search">
+                    <button class="ui icon button" type="submit">
+                        <i class="search icon"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <table class="ui celled striped table">
         <thead>
@@ -36,21 +51,31 @@ $nombre_roles = array_column($roles, 'nombre', 'id');
                     <td><?= $usuario['usu_ape'] ?></td>
                     <td><?= $nombre_almacenes[$usuario['usu_almacen']] ?></td>
                     <td>
-                        <?php if ($usuario['rol_id'] == 1) : ?>
+                        <?php
+                        if ($usuario['rol_id'] == 1) :
+                        ?>
                             <p class="ui blue circular label">
-                            <?php elseif ($usuario['rol_id'] == 2) : ?>
+                            <?php
+                        elseif ($usuario['rol_id'] == 2) :
+                            ?>
                             <p class="ui purple circular label">
-                            <?php elseif ($usuario['rol_id'] == 3) : ?>
+                            <?php
+                        elseif ($usuario['rol_id'] == 3) :
+                            ?>
                             <p class="ui orange circular label">
-                            <?php else : ?>
+                            <?php
+                        else :
+                            ?>
                             <p class="ui circular label">
-                            <?php endif ?>
+                            <?php
+                        endif
+                            ?>
                             <?= $nombre_roles[$usuario['rol_id']] ?></p>
                     </td>
                     <td class="rigth aligned collapsing">
-                        <button class="ui red circular button">Eliminar</button>
+                        <button class="ui red circular button" onclick="modalDelete(<?= $usuario['id'] ?>)">Eliminar</button>
 
-                        <button class="ui yellow circular button">Editar</button>
+                        <button class="ui yellow circular button" onclick="modalEdit(<?= $usuario['id'] ?>)">Editar</button>
                     </td>
                 </tr>
             <?php endforeach ?>

@@ -12,19 +12,19 @@
                 <div class="field">
                     Nombre del usuario
 
-                    <input type="text" name="usu_nom" placeholder="Ingrese el nombre del usuario" required>
+                    <input type="text" name="usu_nom" id="inpNombre" placeholder="Ingrese el nombre del usuario" required>
                 </div>
 
                 <div class="field">
                     Apellido
 
-                    <input type="text" name="usu_ape" placeholder="Ingrese el apellido del usuario" required>
+                    <input type="text" name="usu_ape" id="inpApellido" placeholder="Ingrese el apellido del usuario" required>
                 </div>
 
                 <div class="field">
                     Numero de colaborador
 
-                    <input type="number" name="num_colab" placeholder="Ingrese el numero de colaborador" required>
+                    <input type="number" name="num_colab" id="inpNumColab" placeholder="Ingrese el numero de colaborador" required>
                 </div>
 
             </div>
@@ -33,7 +33,7 @@
                 <div class="field">
                     Correo
 
-                    <input type="email" name="usu_correo" placeholder="Ingrese el correo electronico" required>
+                    <input type="email" name="usu_correo" id="inpMail" placeholder="Ingrese el correo electronico" required>
                 </div>
 
                 <div class="field">
@@ -81,7 +81,7 @@
                 <div class="field">
                     Teléfono
 
-                    <input type="number" name="usu_telf" placeholder="Ingrese número telefónico" required>
+                    <input type="number" name="usu_telf" id="usuTelf" placeholder="Ingrese número telefónico" required>
                 </div>
 
             </div>
