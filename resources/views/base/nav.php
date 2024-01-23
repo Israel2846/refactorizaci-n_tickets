@@ -6,6 +6,7 @@ $subcategoriaRoute = '/subcategoria';
 $almacenRoute = '/almacen';
 $areaRoute = '/area';
 $usuarioRoute = '/usuario';
+$ticketRoute = '/ticket';
 
 function isActive($currentUrl, $targetRoute)
 {
@@ -33,6 +34,11 @@ function isActive($currentUrl, $targetRoute)
     <a class="item <?= isActive($currentUrl, $usuarioRoute) ? 'active' : '' ?>" href="<?= $usuarioRoute ?>">
         Usuario
     </a>
+
+    <a class="item <?= isActive($currentUrl, $ticketRoute) ? 'active' : '' ?>" href="<?= $ticketRoute ?>">
+        Tickets
+    </a>
+
     <div class="right menu">
         <a class="ui item" href="/cerrar_sesion">
             Cerrar sesión

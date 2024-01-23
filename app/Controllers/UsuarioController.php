@@ -48,6 +48,7 @@ class UsuarioController extends Controller
 
         $this->redirect('/');
     }
+
     public function index()
     {
         $title = 'Usuario';

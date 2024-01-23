@@ -55,4 +55,11 @@ class SubcategoriaController extends Controller
 
         return $this->redirect('/subcategoria');
     }
+
+    public function getSubCat($id)
+    {
+        $model = new Subcategoria;
+
+        return $model->where('cat_id', $id)->get();
+    }
 }

@@ -4,6 +4,7 @@ use App\Controllers\AlmacenController;
 use App\Controllers\AreaController;
 use App\Controllers\CategoriaController;
 use App\Controllers\SubcategoriaController;
+use App\Controllers\TicketController;
 use App\Controllers\UsuarioController;
 use Lib\Route;
 
@@ -42,5 +43,9 @@ Route::post('/usuario/create', [UsuarioController::class, 'create']);
 Route::get('/usuario/edit/:id', [UsuarioController::class, 'edit']);
 Route::post('/usuario/edit/:id', [UsuarioController::class, 'update']);
 Route::post('/usuario/delete/:id', [UsuarioController::class, 'destroy']);
+
+Route::get('/ticket', [TicketController::class, 'index']);
+Route::post('/ticket/create', [TicketController::class, 'create']);
+Route::get('/ticket/comboSubCat/:id', [SubcategoriaController::class, 'getSubCat']);
 
 Route::dispatch();
