@@ -13,10 +13,16 @@ class TicketController extends Controller
         $title = 'Tickets';
 
         $modelCategoria = new Categoria;
+        $modelTicket = new Ticket;
 
         $categorias = $modelCategoria->get();
+        $tickets = $modelTicket
+            ->select('tm_ticket.id', 'tm_categoria.cat_nom', 'tm_ticket.tick_titulo', 'tm_ticket.prio_id', 'tm_ticket.fech_crea', 'tm_ticket.fech_asig', 'tm_ticket.fech_cierre', 'creador.usu_nom AS creador')
+            ->join('tm_ticket', 'cat_id', 'tm_categoria', 'id')
+            ->join('tm_ticket', 'usu_id', 'tm_usuario', 'id', 'creador')
+            ->get();
 
-        return $this->view('tickets.index', compact('title', 'categorias'));
+        return $this->view('tickets.index', compact('title', 'categorias', 'tickets'));
     }
 
     public function create()

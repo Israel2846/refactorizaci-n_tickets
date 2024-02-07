@@ -13,9 +13,11 @@ class Model
     protected $connection;
     protected $query;
     protected $table;
-    protected $orderBy = "";
-    protected $where, $values = [];
+    protected $orderBy = '';
+    protected $where;
+    protected $values = [];
     protected $select = '*';
+    protected $join = '';
 
     public function __construct()
     {
@@ -54,6 +56,17 @@ class Model
     public function select(...$columns)
     {
         $this->select = implode(', ', $columns);
+
+        return $this;
+    }
+
+    public function join($tabla1, $union1, $tabla2, $union2, $as = null)
+    {
+        if ($as) {
+            $this->join .= " INNER JOIN {$tabla2} AS {$as} ON {$tabla1}.{$union1} = {$as}.{$union2}";
+        } else {
+            $this->join .= " INNER JOIN {$tabla2} ON {$tabla1}.{$union1} = {$tabla2}.{$union2}";
+        }
 
         return $this;
     }
@@ -121,6 +134,10 @@ class Model
 
             if ($this->orderBy) {
                 $sql .= " ORDER BY {$this->orderBy}";
+            }
+
+            if ($this->join) {
+                $sql .= "{$this->join}";
             }
 
             $this->query($sql, $this->values);
@@ -200,6 +217,10 @@ class Model
         $columns = implode(', ', $columns);
 
         $values = array_values($data);
+
+        foreach ($values as &$value) {
+            $value = strtoupper($value);
+        }
 
         $sql = "INSERT INTO {$this->table} ({$columns}) VALUES (" . str_repeat('?, ', count($values) - 1) . "?)";
 
